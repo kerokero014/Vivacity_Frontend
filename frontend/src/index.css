@@ -13,6 +13,7 @@ h1 {
   align-items: center;
   color: #333;
 }
+
 /*** HEADER ***/
 .header {
   display: flex;
@@ -26,7 +27,7 @@ h1 {
   height: auto;
 }
 
-/****MAIN SECTION ****/
+/**** MAIN SECTION ****/
 
 .main__section {
   display: flex;
@@ -68,81 +69,80 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.8); /* Darker background */
   color: white;
   border-radius: 10px;
   transition: opacity 0.3s ease;
   opacity: 1;
+  z-index: 100; /* Ensure overlay appears above other content */
 }
 
 .info__list {
-  padding: 0;
-  width: 100%;
-  margin: 0;
-  text-align: center;
+  width: 80%; /* Adjust width as needed */
+  text-align: left; /* Align text left */
 }
 
 .info__item {
   margin-bottom: 20px;
-  text-align: center;
 }
-
-/** information from db **/
 
 .info__name {
   margin: 0;
-  font-size: 21px;
+  font-size: 24px; 
   color: white;
+  margin-bottom: 5px;
 }
 
 .who_i_am {
-  margin: 10px 0;
-  font-size: 16px;
-  color: white;
+  margin: 0;
+  font-size: 18px;
+  color: #b3b3b3; 
   font-style: italic;
 }
 
 .info__email {
-  margin: 10px 0;
-  font-size: 14px;
-  color: white;
+  margin: 0;
+  font-size: 16px;
+  color: #b3b3b3;
 }
 
 .info__address {
-  margin: 10px 0;
-  font-size: 17px;
-  color: white;
+  margin: 0;
+  font-size: 16px;
+  color: #b3b3b3;
+  margin-top: 10px; 
 }
 
-.info__hobbies {
-  margin: 10px 0;
-  font-size: 17px;
-  color: white;
-}
-
-.factous {
-  display: flex;
-  flex-direction: column;
-}
+.info__hobbies,
 .info__facts {
-  margin: 10px 0;
-  font-size: 17px;
+  margin: 20px 0 10px; 
+  font-size: 18px;
   color: white;
+}
+
+.info__hobbies ul,
+.info__facts ul {
+  padding-left: 20px;
+}
+
+.info__hobbies ul li,
+.info__facts ul li {
+  margin-bottom: 5px;
 }
 
 .info_github,
 .info_linkedin {
-  margin: 0 5px;
-  font-size: 18px;
-  color: white;
+  margin-top: 10px;
+  font-size: 16px;
+  color: #b3b3b3;
   text-decoration: none;
   display: inline-block;
-  margin-bottom: 5px;
 }
+
 .info_github:hover,
 .info_linkedin:hover {
   text-decoration: underline;
-  transform: scale(1.1);
+  color: #ffffff; /* White on hover */
 }
 
 .loading,

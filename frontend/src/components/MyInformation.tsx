@@ -34,8 +34,9 @@ export default function MyInformation() {
   }, [showInfo]);
 
   const handleImageClick = () => {
-    setShowInfo(true);
+    setShowInfo((prevShowInfo) => !prevShowInfo); // Toggle showInfo state
   };
+
   return (
     <div className="main__section">
       <div className={`image__container ${showInfo ? "info__shown" : ""}`}>
@@ -45,44 +46,48 @@ export default function MyInformation() {
           className="image__button"
           onClick={handleImageClick}
         />
-        {showInfo && !loading && !error && (
+        {showInfo && (
           <div className="info__overlay">
-            <ul className="info__list">
-              {info.map((item) => (
-                <li key={item.id} className="info__item">
-                  <h1 className="info__name">
-                    {item.first_name} {item.last_name}
-                  </h1>
-                  <h2 className="who_i_am">{item.who_i_am}</h2>
-                  <h3 className="info__email">{item.email}</h3>
+            {!loading && !error ? (
+              <ul className="info__list">
+                {info.map((item) => (
+                  <li key={item.id} className="info__item">
+                    <h1 className="info__name">
+                      {item.first_name} {item.last_name}
+                    </h1>
+                    <h2 className="who_i_am">{item.who_i_am}</h2>
+                    <h3 className="info__email">{item.email}</h3>
 
-                  <h4 className="info__hobbies">Hobbies:</h4>
-                  <ul className="hobbies">
-                    {Array.isArray(item.hobbies) &&
-                      item.hobbies.map((hobby: string, index: number) => (
-                        <li key={index}>{hobby}</li>
-                      ))}
-                  </ul>
-                  <h4 className="info__facts">Fun Facts:</h4>
-                  <ul className="factous">
-                    {Array.isArray(item.fun_facts) &&
-                      item.fun_facts.map((fact: string, index: number) => (
-                        <li key={index}>{fact}</li>
-                      ))}
-                  </ul>
-                  <p className="info__address">{item.address}</p>
-                  <a href={item.github} className="info_github">
-                    <p>github</p>
-                  </a>
-                  <a href={item.linkedin} className="info_linkedin">
-                    <p>Linkedin</p>
-                  </a>
-                </li>
-              ))}
-            </ul>
+                    <h4 className="info__hobbies">Hobbies:</h4>
+                    <ul className="hobbies">
+                      {Array.isArray(item.hobbies) &&
+                        item.hobbies.map((hobby: string, index: number) => (
+                          <li key={index}>{hobby}</li>
+                        ))}
+                    </ul>
+                    <h4 className="info__facts">Fun Facts:</h4>
+                    <ul className="facts">
+                      {Array.isArray(item.fun_facts) &&
+                        item.fun_facts.map((fact: string, index: number) => (
+                          <li key={index}>{fact}</li>
+                        ))}
+                    </ul>
+                    <p className="info__address">{item.address}</p>
+                    <a href={item.github} className="info_github">
+                      <p>GitHub</p>
+                    </a>
+                    <a href={item.linkedin} className="info_linkedin">
+                      <p>LinkedIn</p>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <div className="loading">Loading...</div>
+            )}
+            {error && <div className="error">Error: {error}</div>}
           </div>
         )}
-        {error && <div>Error: {error}</div>}
       </div>
     </div>
   );
