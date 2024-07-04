@@ -4,6 +4,7 @@ import { fetchInfo } from "../utils/requests.mts";
 import Info from "../Data/Info.model";
 import myPic from "../assets/myPic.jpg";
 
+
 export default function MyInformation() {
   const [info, setInfo] = useState<Info[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -47,7 +48,7 @@ export default function MyInformation() {
           onClick={handleImageClick}
         />
         {showInfo && (
-          <div className="info__overlay">
+          <div className="info__overlay ">
             {!loading && !error ? (
               <ul className="info__list">
                 {info.map((item) => (
