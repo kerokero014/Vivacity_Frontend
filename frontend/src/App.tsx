@@ -4,6 +4,9 @@ import React from "react";
 import ParticlesBackground from "./components/ParticleBackground";
 import Header from "./components/MainHeader";
 import Image from "./assets/Mylogo.png";
+import MyInformation from "./components/MyInformation";
+import FunFact from "./components/funFact";
+
 
 const App: React.FC = () => {
   return (
@@ -11,6 +14,8 @@ const App: React.FC = () => {
       <ParticlesBackground />
       <div style={{ position: "relative", zIndex: 1 }}>
         <Header logoSrc={Image} altText="My Logo" />
+        <MyInformation />
+        <FunFact />
       </div>
     </div>
   );

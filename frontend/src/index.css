@@ -1,26 +1,43 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 h1 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #333;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #333;
 }
 
 .header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 10px;
 }
 
 .logo {
-    max-width: 300px;
-    height: auto;
+  max-width: 300px;
+  height: auto;
+}
+
+.main__section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+  background-color: #f4f4f492;
+}
+
+.funfact__section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
 }
