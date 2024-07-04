@@ -2,54 +2,88 @@
 import { useState, useEffect } from "react";
 import { fetchInfo } from "../utils/requests.mts";
 import Info from "../Data/Info.model";
+import myPic from "../assets/myPic.jpg";
 
 export default function MyInformation() {
   const [info, setInfo] = useState<Info[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [showInfo, setShowInfo] = useState<boolean>(false);
 
   useEffect(() => {
-    const loadInfo = async () => {
-      try {
-        const data = await fetchInfo("http://localhost:8000/awesome/applicant");
-        console.log(data);
-        setInfo(data);
-        setLoading(false);
-      } catch (error) {
-        if (error instanceof Error) {
-          setError(error.message);
-        } else {
-          setError("An unexpected error occurred");
+    if (showInfo) {
+      const loadInformation = async () => {
+        setLoading(true);
+        setError(null);
+
+        try {
+          const data = await fetchInfo(
+            "http://localhost:3000/awesome/applicant"
+          );
+          setInfo(data);
+        } catch (error) {
+          if (error instanceof Error) setError(error.message);
+          else setError("An unknown error occurred");
+        } finally {
+          setLoading(false);
         }
-        setLoading(false);
-      }
-    };
+      };
 
-    loadInfo();
-  }, []);
+      loadInformation();
+    }
+  }, [showInfo]);
 
-  if (loading) {
-    return <div className="loading">Loading...</div>;
-  }
-
-  if (error) {
-    return <div className="error">Error: {error}</div>;
-  }
-
+  const handleImageClick = () => {
+    setShowInfo(true);
+  };
   return (
     <div className="main__section">
-      <h2>My Information</h2>
-      <ul>
-        {info.map((info) => (
-          <li key={info.id}>
-            <h3>{info.first_name}</h3>
-            <p>{info.last_name}</p>
-            <p>{info.email}</p>
-            <p>{info.phone}</p>
-            <p>{info.address}</p>
-          </li>
-        ))}
-      </ul>
+      <div className={`image__container ${showInfo ? "info__shown" : ""}`}>
+        <img
+          src={myPic}
+          alt="Show Information"
+          className="image__button"
+          onClick={handleImageClick}
+        />
+        {showInfo && !loading && !error && (
+          <div className="info__overlay">
+            <ul className="info__list">
+              {info.map((item) => (
+                <li key={item.id} className="info__item">
+                  <h1 className="info__name">
+                    {item.first_name} {item.last_name}
+                  </h1>
+                  <h2 className="who_i_am">{item.who_i_am}</h2>
+                  <h3 className="info__email">{item.email}</h3>
+
+                  <h4 className="info__hobbies">Hobbies:</h4>
+                  <ul className="hobbies">
+                    {Array.isArray(item.hobbies) &&
+                      item.hobbies.map((hobby: string, index: number) => (
+                        <li key={index}>{hobby}</li>
+                      ))}
+                  </ul>
+                  <h4 className="info__facts">Fun Facts:</h4>
+                  <ul className="factous">
+                    {Array.isArray(item.fun_facts) &&
+                      item.fun_facts.map((fact: string, index: number) => (
+                        <li key={index}>{fact}</li>
+                      ))}
+                  </ul>
+                  <p className="info__address">{item.address}</p>
+                  <a href={item.github} className="info_github">
+                    <p>github</p>
+                  </a>
+                  <a href={item.linkedin} className="info_linkedin">
+                    <p>Linkedin</p>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {error && <div>Error: {error}</div>}
+      </div>
     </div>
   );
 }

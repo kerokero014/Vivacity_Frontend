@@ -7,7 +7,7 @@ interface Info {
     address: string;
     github: string;
     linkedin: string;
-    fun_fact: string;
+    fun_facts: string;
     who_i_am: string;
     hobbies: string;
 }

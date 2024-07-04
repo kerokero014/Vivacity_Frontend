@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  list-style: none;
 }
 
 h1 {
@@ -12,7 +13,7 @@ h1 {
   align-items: center;
   color: #333;
 }
-
+/*** HEADER ***/
 .header {
   display: flex;
   align-items: center;
@@ -25,35 +26,135 @@ h1 {
   height: auto;
 }
 
+/****MAIN SECTION ****/
+
 .main__section {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  margin-top: 20px;
-  background-color: #f4f4f492;
+  padding: 20px;
+  background-color: #0000007b;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  position: relative;
 }
 
-.funfact__section {
+.image__container {
+  position: relative;
+  width: 100%;
+}
+
+.image__button {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  transition: filter 0.3s ease;
+  cursor: pointer;
+}
+
+.image__container.info__shown .image__button {
+  filter: brightness(30%);
+}
+
+.info__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  margin-top: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border-radius: 10px;
+  transition: opacity 0.3s ease;
+  opacity: 1;
 }
 
-.loading {
+.info__list {
+  padding: 0;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+}
+
+.info__item {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/** information from db **/
+
+.info__name {
+  margin: 0;
+  font-size: 21px;
+  color: white;
+}
+
+.who_i_am {
+  margin: 10px 0;
+  font-size: 16px;
+  color: white;
+  font-style: italic;
+}
+
+.info__email {
+  margin: 10px 0;
+  font-size: 14px;
+  color: white;
+}
+
+.info__address {
+  margin: 10px 0;
+  font-size: 17px;
+  color: white;
+}
+
+.info__hobbies {
+  margin: 10px 0;
+  font-size: 17px;
+  color: white;
+}
+
+.factous {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  color: black;
+  flex-direction: column;
+}
+.info__facts {
+  margin: 10px 0;
+  font-size: 17px;
+  color: white;
+}
+
+.info_github,
+.info_linkedin {
+  margin: 0 5px;
+  font-size: 18px;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+.info_github:hover,
+.info_linkedin:hover {
+  text-decoration: underline;
+  transform: scale(1.1);
+}
+
+.loading,
+.error {
+  color: #007bff;
+  margin-bottom: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .error {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  color: red;
+  color: #dc3545;
 }

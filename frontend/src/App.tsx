@@ -7,7 +7,6 @@ import Image from "./assets/Mylogo.png";
 import MyInformation from "./components/MyInformation";
 // import FunFact from "./components/funFact";
 
-
 const App: React.FC = () => {
   return (
     <div style={{ position: "relative", width: "100%", height: "100vh" }}>
