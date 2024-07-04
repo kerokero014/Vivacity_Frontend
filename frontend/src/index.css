@@ -41,3 +41,19 @@ h1 {
   flex-direction: column;
   margin-top: 20px;
 }
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  color: black;
+}
+
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  color: red;
+}

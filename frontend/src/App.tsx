@@ -5,7 +5,7 @@ import ParticlesBackground from "./components/ParticleBackground";
 import Header from "./components/MainHeader";
 import Image from "./assets/Mylogo.png";
 import MyInformation from "./components/MyInformation";
-import FunFact from "./components/funFact";
+// import FunFact from "./components/funFact";
 
 
 const App: React.FC = () => {
@@ -15,7 +15,7 @@ const App: React.FC = () => {
       <div style={{ position: "relative", zIndex: 1 }}>
         <Header logoSrc={Image} altText="My Logo" />
         <MyInformation />
-        <FunFact />
+        {/* <FunFact /> */}
       </div>
     </div>
   );
